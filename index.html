@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const redirects = {
+        "gl": "https://www.google.com/ncr",
+        "ms": "https://microsoft.com",
+        // Add more short URLs and their corresponding destinations as needed
+      };
+
+      const path = window.location.pathname.substr(1); // Get the path without the leading '/'
+      const destination = redirects[path];
+
+      if (destination) {
+        window.location.replace(destination);
+      } else {
+        document.body.innerHTML = `Invalid short URL. If you are not redirected, <a href="https://your-fallback-url.com">click here</a>.`;
+        setTimeout(() => {
+          window.location.replace("https://www.google.com/ncr");
+        }, 5000); // Redirect to a fallback URL after 5 seconds if the path is not found
+      }
+    });
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>
